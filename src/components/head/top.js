@@ -2,7 +2,6 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text,Image } from '@tarojs/components'
 import './top.less'
 class Top extends Component{
-    state = {}
     render () {
         return (<view className='top'>
             <view className='left'>
