@@ -1,8 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text,Button } from '@tarojs/components'
 import './index.less'
-import Child from './child'
 import Head from '../../components/head/head.js'
+import Food from '../../components/food/food.js'
+import 'taro-ui/dist/style/index.scss'
 
 export default class Index extends Component {
 
@@ -27,6 +28,7 @@ export default class Index extends Component {
     return (
       <View className='index'>
         <Head />
+        <Food />
       </View>
     )
   }
