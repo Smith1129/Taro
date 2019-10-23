@@ -5,7 +5,7 @@ class Cata extends Component{
     constructor (props){ 
         super(props)
         this.state={
-            actIndex:-1,
+            actIndex:1,
             cataInfo:[
                 {name:'专场',id:1},
                 {name:'热销',id:2},
@@ -17,17 +17,18 @@ class Cata extends Component{
             ]
         }
      }
-     handleCataClick(index){
+     handleCataClick(id){
          this.setState({
-             actIndex:index
-         },this.props.onLabChange(111))
+             actIndex:id
+         },this.props.onLabChange(id))
      }
     render () {
+        console.log(1111)
         const {cataInfo} = this.state
         if(cataInfo){
             return (<View className='cata_content'>
             {cataInfo.map((item,index)=>{
-                return (<Text className={this.state.actIndex === index ?'cata_title active':'cata_title'} onClick={this.handleCataClick.bind(this,index)} key={index}>{item.name}</Text>)
+                return (<Text className={this.state.actIndex === item.id ?'cata_title active':'cata_title'} onClick={this.handleCataClick.bind(this,item.id)} key={index}>{item.name}</Text>)
             })}
         </View>)
         }else{
