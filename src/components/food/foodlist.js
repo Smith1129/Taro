@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text,Button,Image } from '@tarojs/components'
 import './foodlist.less'
+import AddCut from '../addcut/addcut.js'
 class FoodList extends Component{
     constructor (props){ 
         super(props)
@@ -8,7 +9,6 @@ class FoodList extends Component{
      }
     render () {
         const {currentList} = this.props
-        console.log(this.props.currentList)
         return (<View className='foodlist'>
             <Text>热销</Text>
             <View className="foodlist_content">
@@ -20,6 +20,7 @@ class FoodList extends Component{
                                 <Text>{item.title}</Text>
                                 <Text>月售:{item.sole}</Text>
                                 <Text className='price'>￥{item.price}</Text>
+                                <AddCut></AddCut>
                             </View>
                         </View>)
                     })

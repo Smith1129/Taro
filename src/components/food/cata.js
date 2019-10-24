@@ -23,7 +23,6 @@ class Cata extends Component{
          },this.props.onLabChange(id))
      }
     render () {
-        console.log(1111)
         const {cataInfo} = this.state
         if(cataInfo){
             return (<View className='cata_content'>
