@@ -1,11 +1,13 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text,Button } from '@tarojs/components'
 import './cata.less'
+import {getEvent} from '../../utils/common.js'
+let myEvent = getEvent()
 class Cata extends Component{
     constructor (props){ 
         super(props)
         this.state={
-            actIndex:1,
+            actIndex:0,
             cataInfo:[
                 {name:'专场',id:1},
                 {name:'热销',id:2},
@@ -21,6 +23,7 @@ class Cata extends Component{
          this.setState({
              actIndex:id
          },this.props.onLabChange(id))
+            myEvent.emit("labChange")
      }
     render () {
         const {cataInfo} = this.state

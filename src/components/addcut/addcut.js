@@ -1,6 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text,Image } from '@tarojs/components'
 import './addcut.less'
+import {getEvent,getFoodCount,setFoodCount} from '../../utils/common'
+let myEvent = getEvent()
 class AddCut extends Component{
     constructor (props){ 
         super(props)
@@ -8,20 +10,45 @@ class AddCut extends Component{
             count:0
         }
      }
+     componentDidMount(){
+         this.setState({
+             count:getFoodCount(this.props.food)
+         })
+         myEvent.on('labChange',()=>{
+             this.setState({
+                 count:getFoodCount(this.props.food)
+             })
+         })
+     }
      handleCount(index){
-        let num = this.state.count
-        
-        if(index===0 && num>0){
-            num--;
-            this.setState({
-                count:num
-            })
-        }else if(index===1){
-            num++
-            this.setState({
-                count:num
-            })
-        }
+         if(index===0){
+            if(this.props.food){
+                if(this.state.count >=1){
+                    setFoodCount(this.props.food,this.state.count,'cut',()=>{
+                        console.log(9999)
+                        // myEvent.emit('addcut')
+                        let num = getFoodCount(this.props.food)
+                        console.log(num,'cutnum')
+                        this.setState({
+                            count:num
+                        })
+                    })
+                }else{
+                    console.error('异常')
+                }
+            }
+         }else if(index===1){
+             if(this.props.food){
+                 setFoodCount(this.props.food,this.state.count,'add',()=>{
+                     console.log(777777)
+                    //  myEvent.emit('addcut')
+                     let num =  getFoodCount(this.props.food)
+                     this.setState({
+                        count: num
+                    })
+                 })
+             }
+         }
      }
     render () {
         return (<View className='addcut'>

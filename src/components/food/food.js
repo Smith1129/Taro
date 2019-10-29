@@ -15,7 +15,7 @@ class Food extends Component{
         }
      }
      componentDidMount(){
-         this.changeLab(1)
+        //  this.changeLab(1)
      }
     render () {
         const {tabList,currentList} = this.state 
@@ -39,9 +39,9 @@ class Food extends Component{
         })
     }
     changeLab(id){
-        let check = this.state.foodList.some((item)=>item.id === id)
+        let check = this.state.foodList.some((item)=>item.pid === id)
         if(check){
-            let currentList = this.state.foodList.filter((item)=>item.id===id)
+            let currentList = this.state.foodList.filter((item)=>item.pid===id)
             this.setState({
                 currentList:currentList
             })
@@ -50,7 +50,7 @@ class Food extends Component{
             this.setState({
                 foodList:this.state.foodList.concat(data)
             },()=>{
-                this.setState({currentList:this.state.foodList.filter(item=>item.id===id)})	
+                this.setState({currentList:this.state.foodList.filter(item=>item.pid===id)})	
             })
         }
     }
@@ -62,7 +62,8 @@ class Food extends Component{
         let count = Math.round(Math.random()*2);
          return Array.from(Array(Math.round(Math.random()*20)),(v,k)=>({
             title:`分类${id}菜品${k+1}`,
-            id:id,
+            id:id + "_" + k,
+            pid:id,
             imgUrl:count,
             price:Math.round(Math.random()*20),
             sole:Math.round(Math.random()*50)
