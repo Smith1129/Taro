@@ -42,3 +42,19 @@ export function setFoodCount(food,num,type,callback){
 export function getEvent(){
     return myEvent
 }
+/////获取缓存中所有菜品的总价格
+export function getAllFoodPrice(){
+    let store = Taro.getStorageSync(foodKey);
+    let allPrice = 0;
+    let allNum = 0;
+    if(store){
+        Object.keys(store).map((key)=>{
+            if(store[key]){
+                allPrice += store[key].price*store[key].num;
+                allNum += store[key].num;
+            }
+        })
+    }
+    console.log(allNum)
+    return {allPrice,allNum}
+}

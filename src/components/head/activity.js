@@ -14,11 +14,11 @@ class Activity extends Component{
     }
     render () {
         let {actInfo} = this.state
-        return (<view className='activity'>
+        return (<View className='activity'>
             <Text className='type'>{actInfo.type==='cut'?'减':''}</Text>
             <Text>{actInfo.info.map((item,index)=>{return `满${item.total}减${item.cut};`})}</Text>
             <Text className='act_count'>{actInfo.len}个活动</Text>
-        </view>)
+        </View>)
     }
 }
 export default Activity

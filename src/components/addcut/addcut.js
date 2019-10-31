@@ -49,11 +49,14 @@ class AddCut extends Component{
                  })
              }
          }
+         myEvent.emit('addcut')
      }
     render () {
+        let {count} = this.state
+        let show = count===0?'noshow':''
         return (<View className='addcut'>
-            <Image className='cut_image' src={require('../../assets/image/cut.png')} onClick={this.handleCount.bind(this,0)}></Image>
-            <Text className='food_num'>{this.state.count}</Text>
+            <Image className={'cut_image '+show} src={require('../../assets/image/cut.png')} onClick={this.handleCount.bind(this,0)}></Image>
+            <Text className={'food_num '+show}>{count}</Text>
             <Image className='cut_image' src={require('../../assets/image/add.png')} onClick={this.handleCount.bind(this,1)}></Image>
         </View>)
     }

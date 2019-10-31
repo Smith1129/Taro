@@ -16,7 +16,7 @@ class Head extends Component{
     }
     render () {
         let {store} = this.state
-        return (<view className='head'>
+        return (<View className='head'>
             <Top/>
             <Image className='back' src={require('../../assets/image/food.jpg')}></Image>
             <View className='store'>
@@ -32,7 +32,7 @@ class Head extends Component{
                 </View>
             </View>
             <Activity />
-        </view>
+        </View>
         )
     }
 }

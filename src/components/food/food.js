@@ -25,7 +25,7 @@ class Food extends Component{
                 <AtTabsPane>
                     <View className='food_body'>
                         <Cata onLabChange={this.changeLab.bind(this)}></Cata>
-                        <FoodList currentList={currentList} onFoodChange={this.changeFood}></FoodList>
+                        <FoodList currentList={currentList} onFoodChange={this.changeFood} style="width:'100%'"></FoodList>
                     </View>
                 </AtTabsPane>
                 <AtTabsPane>2</AtTabsPane>
